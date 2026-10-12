@@ -13,6 +13,8 @@ type ShadcnSize = ComponentProps<typeof Button>["size"];
 
 type CustomIconButtonProps = Omit<ComponentProps<"button">, "children"> & {
   label: string;
+  description?: string;
+  side?: ComponentProps<typeof TooltipContent>["side"];
   children: ReactNode;
   variant?: IconButtonVariant;
   size?: IconButtonSize;
@@ -32,9 +34,11 @@ const SIZES: Record<IconButtonSize, ShadcnSize> = {
   lg: "icon-lg",
 };
 
-// A square button that holds only an icon. The label is its accessible name and shows as a tooltip, so it is required.
+// A square button that holds only an icon. The label is its accessible name and shows as a tooltip, so it is required, an optional description adds a second line.
 const CustomIconButton = ({
   label,
+  description,
+  side,
   children,
   variant = "ghost",
   size = "md",
@@ -52,7 +56,13 @@ const CustomIconButton = ({
           {children}
         </Button>
       </TooltipTrigger>
-      <TooltipContent>{label}</TooltipContent>
+      <TooltipContent
+        side={side}
+        className={description ? "flex-col items-start gap-0.5" : undefined}
+      >
+        <span className="font-semibold">{label}</span>
+        {description && <span className="opacity-80">{description}</span>}
+      </TooltipContent>
     </Tooltip>
   );
 };

@@ -89,3 +89,6 @@ export const FAQ = [
     body: "Yes. Run npx shadcn@latest add <name>, then check the new file imports cn from @/lib/cn.",
   },
 ];
+
+// Sample words for the typewriter demo.
+export const TYPED_WORDS = ["builder", "designer", "problem solver"];

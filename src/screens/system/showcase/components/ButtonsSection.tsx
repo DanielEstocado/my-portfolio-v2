@@ -1,5 +1,5 @@
 import { ArrowRight, Bell, Download, Plus, Settings, Trash2 } from "lucide-react";
-import { CustomButton, CustomIconButton } from "@/components";
+import { CustomAnimatedButton, CustomButton, CustomIconButton } from "@/components";
 import { Button } from "@/components/ui/button";
 import SpecimenFrame from "./SpecimenFrame";
 import SpecimenSection from "./SpecimenSection";
@@ -65,6 +65,10 @@ const ButtonsSection = () => {
             <Bell />
           </CustomIconButton>
         </div>
+      </SpecimenFrame>
+
+      <SpecimenFrame label="Animated link button, hover and press it">
+        <CustomAnimatedButton href="#buttons">View my work</CustomAnimatedButton>
       </SpecimenFrame>
 
       <SpecimenFrame label="shadcn Button, the base">

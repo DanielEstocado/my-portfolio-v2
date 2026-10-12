@@ -1,3 +1,4 @@
+export { default as CustomAnimatedButton } from "./CustomAnimatedButton";
 export { default as CustomButton } from "./CustomButton";
 export { default as CustomDarkModeToggle } from "./CustomDarkModeToggle";
 export { default as CustomDialogLoader } from "./CustomDialogLoader";
@@ -7,5 +8,6 @@ export { default as CustomPageHeader } from "./CustomPageHeader";
 export { default as CustomResponsiveModal } from "./CustomResponsiveModal";
 export { default as CustomSpinner } from "./CustomSpinner";
 export { default as CustomTextarea } from "./CustomTextarea";
+export { default as CustomTypewriter } from "./CustomTypewriter";
 export { default as CustomThemeDock } from "./CustomThemeDock";
 export { default as CustomToaster } from "./CustomToaster";

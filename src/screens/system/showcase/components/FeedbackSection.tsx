@@ -5,10 +5,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { CustomTypewriter } from "@/components";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { FAQ } from "../constant";
+import { FAQ, TYPED_WORDS } from "../constant";
 import SpecimenFrame from "./SpecimenFrame";
 import SpecimenSection from "./SpecimenSection";
 
@@ -20,6 +21,12 @@ const FeedbackSection = () => {
       title="Feedback"
       description="How the app talks back. Alerts, badges and toasts share the same four state colors."
     >
+      <SpecimenFrame label="Typewriter, types the words one after another">
+        <p className="title text-h2 font-extrabold">
+          I&apos;m a <CustomTypewriter words={TYPED_WORDS} />
+        </p>
+      </SpecimenFrame>
+
       <SpecimenFrame label="Alerts">
         <div className="flex flex-col gap-sm">
           <Alert variant="info">
