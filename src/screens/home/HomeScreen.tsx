@@ -1,4 +1,5 @@
 import logo from "@/assets/logo.svg";
+import AboutSection from "./components/AboutSection";
 import HeroPanel from "./components/HeroPanel";
 import MarqueeBand from "./components/MarqueeBand";
 import SidePattern from "./components/SidePattern";
@@ -7,7 +8,7 @@ import SocialProof from "./components/SocialProof";
 const LOGO_COUNT = 40;
 const NAME_COUNT = 14;
 
-// The home screen: the hero between two sliding bands, then the numbers.
+// The home screen: the hero between two sliding bands, then the numbers and the about section.
 const HomeScreen = () => {
   return (
     // isolate keeps the -z-1 wireframe lines above the page background, overflow-x-clip hides their extra width.
@@ -56,6 +57,10 @@ const HomeScreen = () => {
         <div className="stripe-divider" />
         {/* Social proof */}
         <SocialProof />
+        {/* Stripes */}
+        <div className="stripe-divider" />
+        {/* About */}
+        <AboutSection />
       </div>
     </main>
   );

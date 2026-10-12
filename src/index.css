@@ -13,6 +13,8 @@
   --font-sans: "Inter Variable", "Inter", sans-serif;
   --font-title: "Poppins", sans-serif;
   --font-subtitle: "Inter Variable", "Inter", sans-serif;
+  /* Geist Mono, for details and captions that read like data, used with the font-mono class. */
+  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
   /* Noto Sans Tagalog, the Baybayin script, used for the name written in Baybayin. */
   --font-baybayin: "Noto Sans Tagalog", sans-serif;
 }
@@ -219,6 +221,41 @@
     *::-webkit-scrollbar-thumb {
       border-radius: 999px;
       background: color-mix(in oklab, var(--foreground) 30%, transparent);
+    }
+  }
+
+  /* The page scrollbar in the wireframe style: a hatched track with a hairline on its left, and a
+     primary thumb inset inside it. Chrome and Safari draw it, other browsers keep the thin themed one
+     above. The standard scrollbar properties are reset on the page because they switch this off. */
+  @supports selector(::-webkit-scrollbar) {
+    html {
+      scrollbar-width: auto;
+      scrollbar-color: auto;
+    }
+    html::-webkit-scrollbar {
+      width: 0.875rem;
+      height: 0.875rem;
+    }
+    html::-webkit-scrollbar-track {
+      border-left: 1px solid var(--border);
+      background-color: var(--background);
+      background-image: repeating-linear-gradient(
+        315deg,
+        var(--hatch) 0,
+        var(--hatch) 1px,
+        transparent 0,
+        transparent 50%
+      );
+      background-size: 0.5rem 0.5rem;
+    }
+    html::-webkit-scrollbar-thumb {
+      border: 3px solid transparent;
+      border-radius: var(--radius-lg);
+      background-color: var(--primary);
+      background-clip: padding-box;
+    }
+    html::-webkit-scrollbar-thumb:hover {
+      background-color: color-mix(in oklab, var(--primary) 80%, var(--foreground));
     }
   }
 

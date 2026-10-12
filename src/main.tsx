@@ -8,6 +8,7 @@ import { TooltipProvider } from "./components/ui/tooltip";
 import LoadingProvider from "./providers/LoadingProvider";
 import ThemeTweaksProvider from "./providers/ThemeTweaksProvider";
 import "@fontsource-variable/inter/index.css";
+import "@fontsource-variable/geist-mono/index.css";
 import "@fontsource/noto-sans-tagalog/400.css";
 import "@fontsource/poppins/400.css";
 import "@fontsource/poppins/500.css";
