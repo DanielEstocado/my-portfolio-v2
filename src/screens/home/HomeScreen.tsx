@@ -1,18 +1,38 @@
-import { CustomPageHeader } from "@/components";
+import logo from "@/assets/logo.svg";
+import HeroPanel from "./components/HeroPanel";
+import MarqueeBand from "./components/MarqueeBand";
 
-// The app's own home screen, a blank starting point. Replace it with the first real screen.
+const LOGO_COUNT = 40;
+const NAME_COUNT = 14;
+
+// The home screen: the hero between two sliding bands.
 const HomeScreen = () => {
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <CustomPageHeader />
-
-      <section className="page-container flex min-h-[calc(100svh-var(--page-header-height))] flex-col items-center justify-center text-center">
-        <h1 className="title text-display text-balance">Home</h1>
-        <p className="subtitle mt-md max-w-xl text-body-lg text-muted-foreground">
-          This is your app's home screen. Replace it with the first real
-          screen, it lives in src/screens/home.
-        </p>
-      </section>
+    // isolate keeps the -z-1 wireframe lines above the page background, overflow-x-clip hides their extra width.
+    <main className="isolate overflow-x-clip bg-background text-foreground">
+      <div className="wireframe-column">
+        {/* Logo band */}
+        <MarqueeBand>
+          {Array.from({ length: LOGO_COUNT }, (_, i) => (
+            <span key={i} className="flex shrink-0 items-center">
+              <span
+                style={{ maskImage: `url(${logo})` }}
+                className="size-6 bg-background [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]"
+              />
+              <span className="mx-md">·</span>
+            </span>
+          ))}
+        </MarqueeBand>
+        <HeroPanel />
+        {/* Name band */}
+        <MarqueeBand reverse>
+          {Array.from({ length: NAME_COUNT }, (_, i) => (
+            <span key={i} className="title shrink-0 text-body font-extrabold tracking-wide whitespace-nowrap uppercase">
+              Daniel Estocado<span className="mx-md">·</span>
+            </span>
+          ))}
+        </MarqueeBand>
+      </div>
     </main>
   );
 };

@@ -348,6 +348,18 @@ the left, the dark mode button and an optional `action` on the right), don't for
   Only add a *second* comment on top of that one-liner when something about the line below is
   genuinely non-obvious (a workaround, a hidden constraint), and even then keep it to one more
   short line, never a paragraph.
+- **Markup comments** (inside JSX) only label what a section is, one or two words, nothing else.
+  Never explain sizes, math, breakpoints or why a class is there in markup, a class list speaks
+  for itself.
+  ```tsx
+  {/* Hero */}
+  <section>
+    {/* Name */}
+    <h1>...</h1>
+    {/* Portrait */}
+    <img />
+  </section>
+  ```
 - **A failure is never silent.** `useApiMutation` always shows an error toast unless the caller
   passes its own `onError`, in which case the caller owns telling the user what happened. Never
   write an empty `catch {}` block assuming "the hook already handled it" without checking what

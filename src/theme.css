@@ -1,5 +1,5 @@
 :root {
-  --primary: #2861bd;
+  --primary: #3dff6f;
   --foreground: oklch(0.16 0.012 255);
   --background: #faf7f5;
   --radius: 0.25rem;
@@ -8,7 +8,7 @@
 }
 
 .dark {
-  --primary: #007bc7;
+  --primary: #3dff6f;
   --foreground: oklch(0.99 0.012 255);
   --background: #18181b;
 }

@@ -20,7 +20,7 @@
      theme.css, it is the file the Theme panel's copy output goes into. */
 
   /* Brand */
-  --primary-foreground: #ffffff;
+  --primary-foreground: #0b0b0d; /* near black, a neon primary needs dark text */
 
   /* States */
   --success: #16a34a;
@@ -71,7 +71,7 @@
   /* Dark --background, --foreground and --primary are in theme.css. */
 
   /* Brand */
-  --primary-foreground: #ffffff;
+  --primary-foreground: #0b0b0d; /* near black, a neon primary needs dark text */
 
   /* States */
   --success: #22c55e;
@@ -99,6 +99,8 @@
   --muted: color-mix(in oklab, var(--foreground) 5%, var(--background));
   --muted-foreground: color-mix(in oklab, var(--foreground) 62%, var(--background));
   --border: color-mix(in oklab, var(--foreground) 13%, var(--background));
+  --marquee-height: calc(2.75rem * var(--space-scale));
+  --hatch: color-mix(in oklab, var(--foreground) 24%, var(--background));
   --input: var(--border);
   --ring: var(--primary);
 }
@@ -245,7 +247,14 @@
   .subtitle {
     font-family: var(--font-subtitle);
   }
-
+  .text-hero {
+    /* The giant name: a share of the screen width (so it can run past the centre column), capped by the screen height so the hero never outgrows the screen. */
+    font-size: min(calc(17vw * var(--type-scale)), 26svh);
+    line-height: 0.9;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
   .text-display {
     font-size: calc(3rem * var(--type-scale)); /* 48px, matches text-5xl */
     line-height: 1;
@@ -412,5 +421,94 @@
     width: 100%;
     max-width: var(--page-max-width);
     padding-inline: var(--space-lg);
+  }
+}
+
+/* Wireframe lines. Each one is a pseudo-element stretched one screen past both sides of its
+   element, so a line reaches the window edges without taking layout space. They sit at -z-1, so
+   the page wrapper needs `isolate` or they hide behind its background, and `overflow-x-clip` so
+   the extra width never makes a horizontal scrollbar. */
+@utility screen-line-top {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    z-index: -1;
+    height: 1px;
+    width: 200vw;
+    background: var(--border);
+  }
+}
+
+@utility screen-line-bottom {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -100vw;
+    z-index: -1;
+    height: 1px;
+    width: 200vw;
+    background: var(--border);
+  }
+}
+
+/* A full-width band of diagonal hatching, a thin spacer between two panels. */
+@utility stripe-divider {
+  position: relative;
+  height: var(--space-md);
+  &::before {
+    content: "";
+    position: absolute;
+    left: -100vw;
+    z-index: -1;
+    height: 100%;
+    width: 200vw;
+    background-image: repeating-linear-gradient(
+      315deg,
+      var(--hatch) 0,
+      var(--hatch) 1px,
+      transparent 0,
+      transparent 50%
+    );
+    background-size: calc(0.625rem * var(--space-scale)) calc(0.625rem * var(--space-scale));
+  }
+}
+
+/* The bordered page column the wireframe panels sit in: the one page width, with its two side
+   borders as the vertical lines. Panels inside it draw their own horizontal lines. */
+@utility wireframe-column {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--page-max-width);
+  border-inline: 1px solid var(--border);
+}
+
+/* A band of repeating items that slides sideways forever. The track holds two identical halves, so moving it by half its width loops without a jump. */
+@layer components {
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 60s linear infinite;
+  }
+  .marquee-track-reverse {
+    animation-direction: reverse;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
   }
 }

@@ -10,12 +10,18 @@ type RouteConfig = {
 // Setting this to false removes both routes and keeps their code out of the production build,
 // `npm run new-project -- --soft` does it. The imports sit inside the condition on purpose, that is
 // what lets the bundler drop them.
-const SHOW_SYSTEM_SCREENS = false;
+const SHOW_SYSTEM_SCREENS = true;
 
 const SYSTEM_ROUTES: RouteConfig[] = SHOW_SYSTEM_SCREENS
   ? [
-      { path: "/system", screen: lazy(() => import("@/screens/system/showcase/ShowcaseScreen")) },
-      { path: "/system/about", screen: lazy(() => import("@/screens/system/about/AboutScreen")) },
+      {
+        path: "/system",
+        screen: lazy(() => import("@/screens/system/showcase/ShowcaseScreen")),
+      },
+      {
+        path: "/system/about",
+        screen: lazy(() => import("@/screens/system/about/AboutScreen")),
+      },
     ]
   : [];
 // system-routes:end
