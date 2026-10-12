@@ -14,8 +14,14 @@ const HomeScreen = () => {
       {/* Side pattern */}
       <SidePattern />
       {/* Edge strips */}
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 z-40 h-5 bg-primary" />
-      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 z-40 h-5 bg-primary" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 z-40 h-5 bg-primary"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 z-40 h-5 bg-primary"
+      />
       <div className="wireframe-column">
         {/* Logo band */}
         <MarqueeBand edge="top">
@@ -23,7 +29,7 @@ const HomeScreen = () => {
             <span key={i} className="flex shrink-0 items-center">
               <span
                 style={{ maskImage: `url(${logo})` }}
-                className="size-6 bg-background [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]"
+                className="size-6 bg-background mask-center mask-no-repeat mask-contain"
               />
               <span className="mx-md">·</span>
             </span>
@@ -33,7 +39,10 @@ const HomeScreen = () => {
         {/* Name band */}
         <MarqueeBand edge="bottom" reverse>
           {Array.from({ length: NAME_COUNT }, (_, i) => (
-            <span key={i} className="title shrink-0 text-body font-extrabold tracking-wide whitespace-nowrap uppercase">
+            <span
+              key={i}
+              className="title shrink-0 text-body font-extrabold tracking-wide whitespace-nowrap uppercase"
+            >
               Daniel Estocado<span className="mx-md">·</span>
             </span>
           ))}
