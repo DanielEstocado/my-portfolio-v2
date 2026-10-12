@@ -1,6 +1,6 @@
-# jayreh-web-app-template
+# Daniel Estocado
 
-React 19 + Vite + TypeScript + Tailwind v4 starter. Copy it, rename it, build the first screen.
+React 19 + Vite + TypeScript + Tailwind v4 + shadcn/ui.
 
 ```bash
 npm install
@@ -14,5 +14,4 @@ npm run dev
 | `npm run build` | Type-check and build for production |
 | `npm run lint` | ESLint |
 
-The folder layout, typography/spacing scales, and house rules are documented in
-[CLAUDE.md](CLAUDE.md), and live in the app at `/about`.
+The folder layout, typography and spacing scales, and house rules are in [CLAUDE.md](CLAUDE.md).

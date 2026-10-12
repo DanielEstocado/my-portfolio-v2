@@ -11,10 +11,7 @@ const CustomPageHeader = ({ action }: CustomPageHeaderProps) => {
     <header className="sticky top-0 z-10 border-b border-border bg-background/80 backdrop-blur">
       <div className="page-container flex items-center justify-between py-sm">
         <div>
-          <p className="title text-h3">Jayreh</p>
-          <p className="subtitle text-caption text-muted-foreground">
-            We code to provide
-          </p>
+          <p className="title text-h3">Daniel Estocado</p>
         </div>
         <div className="flex items-center gap-sm">
           <CustomDarkModeToggle />

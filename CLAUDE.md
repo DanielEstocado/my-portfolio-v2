@@ -1,4 +1,4 @@
-# jayreh-web-app-template: Conventions
+# Daniel Estocado: Conventions
 
 How this codebase is written. Follow it exactly, it exists so every file reads like every other
 file. If something here conflicts with a habit of yours, this file wins.
@@ -14,12 +14,6 @@ sonner toasts. Light and dark mode.
 | `npm run dev` | Start the dev server |
 | `npm run build` | `tsc -b && vite build`, type-check and build |
 | `npm run lint` | ESLint |
-
-<!-- template-only -->
-`npm run new-project -- --name "My App"` resets the template when a real project starts (`--soft`
-keeps its own screens switched off, the default deletes them), see "Starting a new project" at
-the end.
-<!-- /template-only -->
 
 `config/`, `hooks/useApi.ts`, `lib/`, `validations/`, `services/queries/` + `services/mutations/`,
 and `zustand/` are already scaffolded and ready, they're just empty of any real domain until the
@@ -380,31 +374,3 @@ the left, the dark mode button and an optional `action` on the right), don't for
 - For any change the browser can show, run the dev server and look at it at desktop and phone
   width, and check the console for errors, before saying it works.
 
-<!-- template-only -->
-## Starting a new project
-
-When this template becomes a real project, reset it in one step instead of by hand.
-`npm run new-project -- --name "My App"` is a script (`scripts/new-project.mjs`) with two modes.
-Both replace `screens/home/HomeScreen.tsx`, which renders the showcase, with a blank home.
-
-- **Hard reset (the default).** Deletes `screens/system/showcase/` and `screens/system/about/`, the
-  system routes in `routes.config.ts`, and every `system-screens` and `template-only` block in this
-  file, then lists any place that still mentions the template.
-- **`--soft`.** Keeps every file and only sets `SHOW_SYSTEM_SCREENS` to `false`, so the showcase
-  and guide stay on disk as a reference while you build. Switch their routes (`/system` and
-  `/system/about`) back on by setting it to `true`. It removes only the `template-only` blocks from this file.
-
-Both modes put the name in the header, `index.html`, `package.json`, the README and the title of
-this file. The script only prints a plan until you add `--yes`, refuses to run over uncommitted git
-changes unless you add `--force`, and `--remove-self` deletes the script and the command afterwards.
-
-In Claude Code, `/new-project My App` (add `--soft` for the soft reset,
-`.claude/commands/new-project.md`) runs that script and then handles the judgement calls: rewriting
-the leftover wording in this file and the README, and running build, lint and the browser check. The
-theme and dark mode providers, the loaders, the shared components and the shadcn primitives all stay
-in both modes.
-
-Two kinds of marker comments drive this file's cleanup, keep new text inside the right one.
-`template-only` is removed by both resets (text about the command itself), `system-screens` only by
-the hard reset (text about the showcase and guide, still true after a soft reset).
-<!-- /template-only -->

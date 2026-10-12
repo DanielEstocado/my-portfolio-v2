@@ -10,7 +10,7 @@ type RouteConfig = {
 // Setting this to false removes both routes and keeps their code out of the production build,
 // `npm run new-project -- --soft` does it. The imports sit inside the condition on purpose, that is
 // what lets the bundler drop them.
-const SHOW_SYSTEM_SCREENS = true;
+const SHOW_SYSTEM_SCREENS = false;
 
 const SYSTEM_ROUTES: RouteConfig[] = SHOW_SYSTEM_SCREENS
   ? [
