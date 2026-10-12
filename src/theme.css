@@ -1,0 +1,14 @@
+:root {
+  --primary: #2861bd;
+  --foreground: oklch(0.18 0.012 255);
+  --background: #faf7f5;
+  --radius: 0.25rem;
+  --space-scale: 1.1;
+  --type-scale: 1.07;
+}
+
+.dark {
+  --primary: #007bc7;
+  --foreground: oklch(0.99 0.012 255);
+  --background: #18181b;
+}
