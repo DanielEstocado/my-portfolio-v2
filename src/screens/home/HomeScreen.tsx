@@ -1,6 +1,7 @@
 import logo from "@/assets/logo.svg";
 import HeroPanel from "./components/HeroPanel";
 import MarqueeBand from "./components/MarqueeBand";
+import SidePattern from "./components/SidePattern";
 
 const LOGO_COUNT = 40;
 const NAME_COUNT = 14;
@@ -10,6 +11,8 @@ const HomeScreen = () => {
   return (
     // isolate keeps the -z-1 wireframe lines above the page background, overflow-x-clip hides their extra width.
     <main className="relative isolate overflow-clip bg-background text-foreground">
+      {/* Side pattern */}
+      <SidePattern />
       {/* Edge strips */}
       <div aria-hidden="true" className="absolute inset-x-0 top-0 z-40 h-5 bg-primary" />
       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 z-40 h-5 bg-primary" />
