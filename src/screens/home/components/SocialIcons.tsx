@@ -36,7 +36,7 @@ const SocialIcons = () => {
           hidden: { opacity: 0 },
           visible: { opacity: 1, transition: { delayChildren: 0.2, staggerChildren: 0.09 } },
         }}
-        className="absolute bottom-[calc(var(--space-md)+1.25rem)] left-1/2 z-40 flex -translate-x-1/2 gap-xs rounded-full bg-background/80 p-xs backdrop-blur lg:inset-y-0 lg:bottom-0 lg:left-0 lg:translate-x-0 lg:flex-col lg:justify-start lg:rounded-none lg:border-r lg:bg-transparent lg:px-xs lg:pt-[calc(var(--space-md)+0.55rem)] lg:pb-0 lg:backdrop-blur-none"
+        className="absolute bottom-[calc(var(--space-md)+1.25rem)] left-1/2 z-40 flex -translate-x-1/2 gap-xs rounded-full bg-background/80 p-xs backdrop-blur lg:inset-y-0 lg:bottom-0 lg:left-0 lg:translate-x-0 lg:flex-col lg:justify-start lg:rounded-none lg:border-r lg:bg-transparent lg:px-xs lg:pt-[calc(var(--space-md)+1.35rem)] lg:pb-0 lg:backdrop-blur-none"
       >
         {SOCIALS.map(({ label, description, Icon }) => (
           <motion.li

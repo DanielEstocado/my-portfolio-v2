@@ -14,7 +14,7 @@ const MarqueeBand = ({ children, reverse = false, edge }: MarqueeBandProps) => {
       aria-hidden="true"
       className={cn(
         "marquee relative left-1/2 z-50 flex w-[112vw] -translate-x-1/2 overflow-hidden bg-primary text-background",
-        edge === "top" ? "h-(--marquee-height) -rotate-[0.8deg] items-center" : "-mt-4 h-[calc(var(--marquee-height)+1rem)] rotate-[0.8deg] items-center pt-4 pb-3",
+        edge === "top" ? "h-(--marquee-height) translate-y-4 -rotate-[0.8deg] items-center" : "-mt-4 h-[calc(var(--marquee-height)+1rem)] rotate-[0.8deg] items-center pt-4 pb-3",
       )}
     >
       {/* Track */}

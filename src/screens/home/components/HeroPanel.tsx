@@ -27,7 +27,7 @@ const HeroPanel = () => {
       {/* Hero */}
       <section
         aria-label="Introduction"
-        className="@container relative grid overflow-clip [overflow-clip-margin:8rem] min-h-[calc(100svh-var(--marquee-height)*2-2px)] grid-cols-[minmax(0,1fr)] items-end justify-items-center [--photo-w:calc(80svh*0.925)] lg:landscape:[--photo-w:min(60cqi,80svh*0.925)] [--photo-shift:1.5rem] lg:landscape:[--photo-shift:calc((100cqi-var(--photo-w))/2-var(--space-sm))]"
+        className="@container relative grid [clip-path:inset(-8rem_-8rem_0_-8rem)] min-h-[calc(100svh-var(--marquee-height)*2-2px)] lg:landscape:min-h-[calc(min(100svh,62rem)-var(--marquee-height)*2-2px)] grid-cols-[minmax(0,1fr)] items-end justify-items-center [--photo-w:calc(80svh*0.925)] lg:landscape:[--photo-w:min(60cqi,80svh*0.925)] [--photo-shift:1.5rem] lg:landscape:[--photo-shift:calc((100cqi-var(--photo-w))/2-var(--space-sm))]"
       >
         {/* Socials */}
         <SocialIcons />
