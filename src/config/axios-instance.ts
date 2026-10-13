@@ -6,9 +6,10 @@ export const axiosInstance = axios.create({
   timeout: 15000,
 });
 
-// Fails loudly when VITE_API_URL is missing instead of sending requests to the wrong host.
+// Fails loudly when VITE_API_URL is missing instead of sending requests to the wrong host, a full URL to another service does not need it.
 axiosInstance.interceptors.request.use((config) => {
-  if (!config.baseURL) {
+  const isAbsoluteUrl = /^https?:\/\//.test(config.url ?? "");
+  if (!config.baseURL && !isAbsoluteUrl) {
     return Promise.reject(new Error("VITE_API_URL is not set. Copy .env.example to .env and fill it in."));
   }
   return config;

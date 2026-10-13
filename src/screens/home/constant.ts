@@ -10,6 +10,7 @@ import {
   Phone,
   type LucideIcon,
 } from "lucide-react";
+import type { TerminalCommand, TerminalFile } from "@/types/terminal";
 
 // The numbers that back up the work, shown as social proof on the home screen.
 export const SOCIAL_PROOF = [
@@ -107,3 +108,89 @@ export const HERO_FADE_UP: Variants = {
     transition: { duration: 0.4, ease: REVEAL_EASE, delay: 0.1 },
   },
 };
+
+// The GitHub profile whose contributions the contributions cell shows.
+export const GITHUB_USERNAME = "DanielEstocado";
+
+// The song in the now playing cell. youtubeId is the part after v= in a YouTube link, the title and artist come from the video itself once it loads, these two only show until then.
+export const NOW_PLAYING = {
+  youtubeId: "dQw4w9WgXcQ",
+  title: "Never Gonna Give You Up",
+  artist: "Rick Astley",
+};
+
+// The heights of the bars in the song progress, a steady made up wave so every visit looks the same.
+export const WAVEFORM = Array.from({ length: 48 }, (_, index) =>
+  Math.round((0.3 + 0.7 * Math.abs(Math.sin(index * 1.7) * Math.cos(index * 0.55))) * 100),
+);
+
+export const TERMINAL_PROMPT = "C:\\Users\\Daniel>";
+
+export const TERMINAL_WELCOME = [
+  "Daniel OS [Version 1.0.0]",
+  "(c) Daniel Estocado. All rights reserved.",
+  "",
+  "Type HELP to list the commands.",
+];
+
+export const TERMINAL_FILES: TerminalFile[] = [
+  {
+    name: "about.txt",
+    content: [
+      "Daniel Estocado, web and app developer and programmer from Cavite, Philippines.",
+      "I bash my keyboard with my head until I make something.",
+    ],
+  },
+  {
+    name: "skills.txt",
+    content: ["- Web Developer", "- Android Developer", "- Programmer", "- Artist"],
+  },
+  { name: "contact.txt", content: ["estocado.daniel143@gmail.com"] },
+  {
+    name: "secrets.txt",
+    content: ["Nothing to see here.", "Okay, one secret: most bugs are just features with bad timing."],
+  },
+];
+
+export const TERMINAL_COMMANDS: TerminalCommand[] = [
+  {
+    name: "ver",
+    description: "Shows the version.",
+    output: ["Daniel OS [Version 1.0.0]"],
+  },
+  {
+    name: "whoami",
+    description: "Shows who is here.",
+    output: ["Daniel Estocado, web and app developer and programmer."],
+  },
+  {
+    name: "hostname",
+    description: "Shows the machine name.",
+    output: ["daniel-portfolio"],
+  },
+  {
+    name: "ping",
+    description: "Checks that someone is home.",
+    output: [
+      "Pinging daniel-portfolio with 32 bytes of data:",
+      "Reply from daniel-portfolio: bytes=32 time<1ms",
+      "Reply from daniel-portfolio: bytes=32 time<1ms",
+      "Packets: sent 2, received 2, lost 0 (0% loss).",
+    ],
+  },
+  {
+    name: "coffee",
+    description: "Checks the fuel.",
+    output: ["Brewing...", "Error: 0 cups left, compiling on determination instead."],
+  },
+  {
+    name: "hire",
+    description: "Starts a conversation.",
+    output: ["Access granted.", "Send the offer to estocado.daniel143@gmail.com"],
+  },
+  {
+    name: "exit",
+    description: "Tries to leave.",
+    output: ["Nice try. The window stays open, type CLS to tidy up."],
+  },
+];

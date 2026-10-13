@@ -463,7 +463,7 @@
   }
 }
 
-/* Wireframe lines. Each one is a pseudo-element stretched one screen past both sides of its
+/* Wireframe lines. Each one is a pseudo-element with a one pixel border, not a filled box, so it is drawn exactly one device pixel thick on scaled screens too, stretched one screen past both sides of its
    element, so a line reaches the window edges without taking layout space. They sit at -z-1, so
    the page wrapper needs `isolate` or they hide behind its background, and `overflow-x-clip` so
    the extra width never makes a horizontal scrollbar. */
@@ -475,9 +475,9 @@
     top: 0;
     left: -100vw;
     z-index: -1;
-    height: 1px;
+    height: 0;
     width: 200vw;
-    background: var(--border);
+    border-top: 1px solid var(--border);
   }
 }
 
@@ -489,9 +489,9 @@
     bottom: 0;
     left: -100vw;
     z-index: -1;
-    height: 1px;
+    height: 0;
     width: 200vw;
-    background: var(--border);
+    border-bottom: 1px solid var(--border);
   }
 }
 
@@ -546,6 +546,29 @@
 @keyframes marquee {
   to {
     transform: translateX(-50%);
+  }
+}
+
+/* A bar of the equalizer that bounces up from its bottom edge, set its speed and delay inline so the bars never move together. */
+@layer components {
+  .equalizer-bar {
+    transform-origin: bottom;
+    animation: equalizer 0.9s ease-in-out infinite alternate;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .equalizer-bar {
+      animation: none;
+      transform: scaleY(0.6);
+    }
+  }
+}
+
+@keyframes equalizer {
+  from {
+    transform: scaleY(0.25);
+  }
+  to {
+    transform: scaleY(1);
   }
 }
 

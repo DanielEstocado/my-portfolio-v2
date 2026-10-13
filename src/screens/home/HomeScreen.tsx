@@ -1,6 +1,7 @@
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import logo from "@/assets/logo-mask.png";
 import AboutSection from "./components/AboutSection";
+import CurrentlySection from "./components/CurrentlySection";
 import HeroPanel from "./components/HeroPanel";
 import MarqueeBand from "./components/MarqueeBand";
 import SidePattern from "./components/SidePattern";
@@ -54,6 +55,10 @@ const HomeScreen = () => {
         <div className="stripe-divider" />
         {/* About */}
         <AboutSection />
+        {/* Currently */}
+        <CurrentlySection />
+        {/* Stripes */}
+        <div className="stripe-divider" />
       </div>
     </main>
   );
