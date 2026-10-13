@@ -279,7 +279,7 @@ Dark mode is separate on purpose, so it works whether or not the provider is on.
 follow too), the choice is kept in `localStorage` (`template-dark-mode`), and `initDarkMode()` in
 `main.tsx` restores it before the first render so there is no flash. `CustomPageHeader` shows the
 Dark/Light button (`CustomDarkModeToggle`) on every screen, and the Theme panel's dark switch is
-the same state. Light mode is the default.
+the same state. Dark mode is the default, until a visitor picks light.
 
 Use it while building a real project to find the look, paste the CSS over `theme.css`, then hide
 it: set `enabled={false}` on the provider in `main.tsx` (or remove the provider and

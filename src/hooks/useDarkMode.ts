@@ -17,14 +17,15 @@ function getSnapshot() {
   return document.documentElement.classList.contains("dark");
 }
 
-// Puts the saved choice on the page, call once in main.tsx before the first render so there is no flash.
+// Puts the saved choice on the page, dark unless the person picked light, call once in main.tsx before the first render so there is no flash.
 export function initDarkMode() {
   try {
-    if (localStorage.getItem(STORAGE_KEY) === "dark") {
+    if (localStorage.getItem(STORAGE_KEY) !== "light") {
       document.documentElement.classList.add("dark");
     }
   } catch (error) {
     console.warn("Saved dark mode choice could not be read.", error);
+    document.documentElement.classList.add("dark");
   }
 }
 
