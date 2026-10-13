@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import logo from "@/assets/logo.svg";
+import logo from "@/assets/logo-mask.png";
 
 const BADGE_TEXT = "WEB DEVELOPER • ANDROID DEVELOPER • PROGRAMMER • ARTIST • ";
 

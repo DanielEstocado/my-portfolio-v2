@@ -3,7 +3,7 @@ import { CustomAnimatedButton } from "@/components";
 // The call to action, in the open space at the top left of the hero.
 const RoleBlock = () => {
   return (
-    <div className="absolute top-[calc(var(--space-md)+1.35rem)] left-[calc(4.5rem*var(--type-scale)+var(--space-sm))] z-40 hidden flex-col items-start gap-sm lg:flex">
+    <div className="absolute top-(--space-lg) left-[calc(4.5rem*var(--type-scale)+var(--space-sm))] z-40 hidden flex-col items-start gap-sm lg:flex">
       {/* Action */}
       <CustomAnimatedButton href="#projects">View my works</CustomAnimatedButton>
     </div>

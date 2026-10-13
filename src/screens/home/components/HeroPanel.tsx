@@ -7,7 +7,7 @@ import SocialIcons from "./SocialIcons";
 import ThemeToggle from "./ThemeToggle";
 
 const TAGLINE_CLASS =
-  "subtitle text-body mt-0 hidden font-semibold tracking-[0.08em] uppercase lg:block xl:tracking-[0.18em]";
+  "font-mono text-body mt-0 hidden font-semibold tracking-[0.08em] uppercase lg:block xl:tracking-[0.18em]";
 
 // "Danyel" in Baybayin: da, na with a virama, ye, la with a virama.
 const BAYBAYIN_NAME = "ᜇᜈ᜔ᜌᜒᜎ᜔";
@@ -18,7 +18,7 @@ const BAYBAYIN_END_CLASS =
   "font-baybayin mt-xs block text-[0.27em] leading-none font-bold [-webkit-text-stroke:0.008em_currentColor] tracking-normal normal-case lg:hidden";
 
 const NAME_CLASS =
-  "title text-hero [&>span]:-ml-[0.05em] col-start-1 row-start-1 w-full flex flex-col items-start justify-start self-stretch lg:justify-end px-sm py-md text-left lg:pb-[calc(var(--space-lg)+0.1rem)] lg:pl-[calc(4.5rem*var(--type-scale)+0.05em)] lg:[font-size:min(calc(16cqi*var(--type-scale)),24.5svh)] xl:[font-size:min(calc(16.6cqi*var(--type-scale)),26svh)]";
+  "title text-hero [&>span]:-ml-[0.05em] col-start-1 row-start-1 w-full flex flex-col items-start justify-start self-stretch lg:justify-end px-sm pt-[calc(var(--space-lg)-0.45rem)] pb-md text-left lg:pb-(--space-lg) lg:pl-[calc(4.5rem*var(--type-scale)+0.05em)] lg:[font-size:min(calc(16cqi*var(--type-scale)),24.5svh)] xl:[font-size:min(calc(16.6cqi*var(--type-scale)),26svh)]";
 
 // The hero: the name at the bottom, behind the portrait, between two hairlines.
 const HeroPanel = () => {
@@ -80,6 +80,8 @@ const HeroPanel = () => {
         <img
           src={cutout}
           alt="Portrait of Daniel Estocado"
+          fetchPriority="high"
+          decoding="async"
           className="pointer-events-none z-20 col-start-1 row-start-1 h-auto w-(--photo-w) max-w-none self-end translate-x-(--photo-shift) filter-[drop-shadow(2px_0_0_var(--color-white))_drop-shadow(-2px_0_0_var(--color-white))_drop-shadow(0_2px_0_var(--color-white))_drop-shadow(0_-2px_0_var(--color-white))] select-none"
         />
         {/* Outline filter */}

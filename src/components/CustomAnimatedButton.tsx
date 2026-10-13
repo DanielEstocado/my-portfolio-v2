@@ -8,13 +8,13 @@ type CustomAnimatedButtonProps = {
   children: ReactNode;
 };
 
-// A primary link button with an arrow: on hover it springs up, fades into a darker gradient, gets a ring and a slanted bar slides across it from right to left, on press it squeezes.
+// A primary link button with an arrow: it always wears a ring, on hover it springs up, fades into a darker gradient and a slanted bar slides across it from right to left, on press it squeezes.
 const CustomAnimatedButton = ({ href, children }: CustomAnimatedButtonProps) => {
   return (
     <Button
       asChild
       size="lg"
-      className="text-body-lg group/button relative h-auto gap-3 overflow-hidden rounded-4xl px-5 py-3 font-semibold text-background transition-[background-color,color,box-shadow] duration-300 hover:bg-linear-to-r hover:from-primary hover:to-[color-mix(in_oklab,var(--primary),var(--foreground)_35%)] hover:ring-2 hover:ring-primary hover:ring-offset-2 hover:ring-offset-background"
+      className="font-mono text-body-lg group/button relative h-auto gap-3 overflow-hidden rounded-4xl px-5 py-3 font-semibold text-background transition-[background-color,color,box-shadow] duration-300 hover:bg-linear-to-r hover:from-primary hover:to-[color-mix(in_oklab,var(--primary),var(--foreground)_35%)] ring-2 ring-primary ring-offset-2 ring-offset-background"
     >
       <motion.a
         href={href}

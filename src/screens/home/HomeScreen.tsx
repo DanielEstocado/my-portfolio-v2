@@ -1,4 +1,5 @@
-import logo from "@/assets/logo.svg";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
+import logo from "@/assets/logo-mask.png";
 import AboutSection from "./components/AboutSection";
 import HeroPanel from "./components/HeroPanel";
 import MarqueeBand from "./components/MarqueeBand";
@@ -10,26 +11,18 @@ const NAME_COUNT = 14;
 
 // The home screen: the hero between two sliding bands, then the numbers and the about section.
 const HomeScreen = () => {
+  useSmoothScroll();
+
   return (
     // isolate keeps the -z-1 wireframe lines above the page background, overflow-x-clip hides their extra width.
     <main className="relative isolate overflow-clip bg-background text-foreground">
-      {/* Edge strips */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 z-0 h-9 bg-primary"
-      />
       <div className="wireframe-column">
-        {/* Hero area, clipped at its bottom so the tilted band cannot spill into the next section */}
-        <div className="relative z-10 [clip-path:inset(0_-100vw_0_-100vw)]">
+        {/* Hero area */}
+        <div className="relative z-10">
           {/* Side pattern */}
           <SidePattern />
-          {/* Bottom strip */}
-          <div
-            aria-hidden="true"
-            className="absolute bottom-0 left-1/2 z-40 h-5 w-screen -translate-x-1/2 bg-primary"
-          />
           {/* Logo band */}
-          <MarqueeBand edge="top">
+          <MarqueeBand>
             {Array.from({ length: LOGO_COUNT }, (_, i) => (
               <span key={i} className="flex shrink-0 items-center">
                 <span
@@ -42,7 +35,7 @@ const HomeScreen = () => {
           </MarqueeBand>
           <HeroPanel />
           {/* Name band */}
-          <MarqueeBand edge="bottom" reverse>
+          <MarqueeBand reverse>
             {Array.from({ length: NAME_COUNT }, (_, i) => (
               <span
                 key={i}
