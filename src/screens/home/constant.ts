@@ -1,3 +1,4 @@
+import type { Variants } from "framer-motion";
 import {
   Briefcase,
   Cake,
@@ -58,3 +59,51 @@ export const ABOUT_ITEMS: AboutItem[] = [
   { label: "Sex", value: "Male", icon: Mars },
   { label: "Religion", value: "Christian", icon: Church },
 ];
+
+const REVEAL_EASE = [0.22, 1, 0.36, 1] as const;
+
+// The hero's entrance, every piece starts hidden and the hero section turns them all on together, each with its own delay.
+export const HERO_NAME_LINE: Variants = {
+  hidden: { y: "60%", opacity: 0 },
+  visible: (line: number) => ({
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.8, ease: REVEAL_EASE, delay: 0.1 + line * 0.12 },
+  }),
+};
+
+export const HERO_FADE_IN: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.8, ease: REVEAL_EASE, delay: 0.15 },
+  },
+};
+
+export const HERO_BLOCK: Variants = {
+  hidden: { opacity: 0, y: 80, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.9, ease: REVEAL_EASE, delay: 0.15 },
+  },
+};
+
+export const HERO_POP: Variants = {
+  hidden: { opacity: 0, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { type: "spring", stiffness: 380, damping: 18, delay: 0.1 },
+  },
+};
+
+export const HERO_FADE_UP: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: REVEAL_EASE, delay: 0.1 },
+  },
+};

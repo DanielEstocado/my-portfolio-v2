@@ -1,10 +1,15 @@
+import { motion, useReducedMotion } from "framer-motion";
 import cutout from "@/assets/cutout.webp";
+import HeroBlock from "./HeroBlock";
 import HeroDecor from "./HeroDecor";
 import HeroTexture from "./HeroTexture";
 import MobileIntro from "./MobileIntro";
 import RoleBlock from "./RoleBlock";
 import SocialIcons from "./SocialIcons";
 import ThemeToggle from "./ThemeToggle";
+import { HERO_FADE_IN, HERO_NAME_LINE } from "../constant";
+import { useHeroTilt } from "../hooks/useHeroTilt";
+import { usePortraitRise } from "../hooks/usePortraitRise";
 
 const TAGLINE_CLASS =
   "font-mono text-body mt-0 hidden font-semibold tracking-[0.08em] uppercase lg:block xl:tracking-[0.18em]";
@@ -22,10 +27,18 @@ const NAME_CLASS =
 
 // The hero: the name at the bottom, behind the portrait, between two hairlines.
 const HeroPanel = () => {
+  const reduceMotion = useReducedMotion();
+  const { tilt, handlePointerMove, handlePointerLeave } = useHeroTilt();
+  const { y: portraitY, maskPosition } = usePortraitRise(reduceMotion);
+
   return (
     <div className="screen-line-top screen-line-bottom">
       {/* Hero */}
-      <section
+      <motion.section
+        initial={reduceMotion ? false : "hidden"}
+        animate="visible"
+        onPointerMove={reduceMotion ? undefined : handlePointerMove}
+        onPointerLeave={handlePointerLeave}
         aria-label="Introduction"
         className="@container relative grid [clip-path:inset(-8rem_-8rem_0_-8rem)] min-h-[calc(100svh-var(--marquee-height)*2-2px)] lg:landscape:min-h-[calc(min(100svh,62rem)-var(--marquee-height)*2-2px)] grid-cols-[minmax(0,1fr)] items-end justify-items-center [--photo-w:calc(80svh*0.925)] lg:landscape:[--photo-w:min(60cqi,80svh*0.925)] [--photo-shift:1.5rem] lg:landscape:[--photo-shift:calc((100cqi-var(--photo-w))/2-var(--space-sm))]"
       >
@@ -34,19 +47,11 @@ const HeroPanel = () => {
         {/* Theme */}
         <ThemeToggle />
         {/* Block */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none z-5 col-start-1 row-start-1 mb-[calc(-0.1*var(--photo-w))] h-[calc(var(--photo-w)*1.15)] w-[min(calc(var(--photo-w)*0.9),84cqi)] lg:h-[calc(var(--photo-w)*0.92)] lg:w-[min(calc(var(--photo-w)*0.68),56cqi)] translate-x-(--photo-shift) rotate-6 self-end rounded-4xl bg-primary relative overflow-hidden"
-        >
-          {/* Grain */}
-          <span className="grain absolute inset-0 opacity-45 mix-blend-multiply" />
-          {/* Halftone */}
-          <span className="halftone absolute inset-0 text-foreground/45 mask-[radial-gradient(circle_at_100%_0%,black,transparent_60%)]" />
-        </div>
+        <HeroBlock tilt={tilt} />
         {/* Texture */}
         <HeroTexture />
         {/* Decor */}
-        <HeroDecor />
+        <HeroDecor tilt={tilt} />
         {/* Mobile intro */}
         <MobileIntro />
         {/* Role */}
@@ -56,28 +61,43 @@ const HeroPanel = () => {
           aria-label="Daniel Estocado"
           className={`${NAME_CLASS} z-10 text-foreground`}
         >
-          <span
+          <motion.span
+            variants={HERO_NAME_LINE}
+            custom={0}
             aria-hidden="true"
             lang="tl-Tglg"
             className={BAYBAYIN_START_CLASS}
           >
             {BAYBAYIN_NAME}
-          </span>
-          <span aria-hidden="true">Daniel</span>
-          <span aria-hidden="true">Estocado</span>
-          <span
+          </motion.span>
+          <motion.span variants={HERO_NAME_LINE} custom={1} aria-hidden="true">
+            Daniel
+          </motion.span>
+          <motion.span variants={HERO_NAME_LINE} custom={2} aria-hidden="true">
+            Estocado
+          </motion.span>
+          <motion.span
+            variants={HERO_NAME_LINE}
+            custom={3}
             aria-hidden="true"
             lang="tl-Tglg"
             className={BAYBAYIN_END_CLASS}
           >
             {BAYBAYIN_NAME}
-          </span>
-          <span aria-hidden="true" className={`${TAGLINE_CLASS} text-primary`}>
+          </motion.span>
+          <motion.span
+            variants={HERO_NAME_LINE}
+            custom={3}
+            aria-hidden="true"
+            className={`${TAGLINE_CLASS} text-primary`}
+          >
             - Web/App Developer &amp; Programmer -
-          </span>
+          </motion.span>
         </h1>
         {/* Portrait */}
-        <img
+        <motion.img
+          variants={HERO_FADE_IN}
+          style={{ y: portraitY }}
           src={cutout}
           alt="Portrait of Daniel Estocado"
           fetchPriority="high"
@@ -104,24 +124,27 @@ const HeroPanel = () => {
           </filter>
         </svg>
         {/* Surname outline */}
-        <div
+        <motion.div
+          variants={HERO_FADE_IN}
           aria-hidden="true"
-          style={{ maskImage: `url(${cutout})` }}
-          className={`${NAME_CLASS} pointer-events-none z-30 filter-[url(#name-outline)] mask-[calc(50%+var(--photo-shift))_bottom] mask-no-repeat mask-size-[var(--photo-w)_auto]`}
+          style={{ maskImage: `url(${cutout})`, maskPosition }}
+          className={`${NAME_CLASS} pointer-events-none z-30 filter-[url(#name-outline)] mask-no-repeat mask-size-[var(--photo-w)_auto]`}
         >
           <span className={`${BAYBAYIN_START_CLASS} invisible`}>
             {BAYBAYIN_NAME}
           </span>
           <span className="invisible">Daniel</span>
-          <span>Estocado</span>
+          <motion.span variants={HERO_NAME_LINE} custom={2}>
+            Estocado
+          </motion.span>
           <span className={`${BAYBAYIN_END_CLASS} invisible`}>
             {BAYBAYIN_NAME}
           </span>
           <span className={`${TAGLINE_CLASS} invisible`}>
             - Web/App Developer &amp; Programmer -
           </span>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
     </div>
   );
 };
